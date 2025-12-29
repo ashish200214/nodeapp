@@ -1,5 +1,16 @@
-FROM node
-WORKDIR nodeapp
+FROM node:21
+ 
+# Set the working directory in the container
+WORKDIR /usr/src/app
+ 
+# Install application dependencies
+RUN npm install
+ 
+# Copy the application code to the working directory
 COPY . .
+ 
+# Expose the port your app will run on
 EXPOSE 3000
-CMD["node","app.js"]
+ 
+# Command to run your application
+CMD ["node","app.js"]
